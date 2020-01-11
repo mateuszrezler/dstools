@@ -10,7 +10,7 @@ def load_random_images(amount=10, length=360, width=360):
 
     images = []
 
-    for image in range(amount):
+    while len(images) < amount:
         image_nr = randint(1, 1084+1)
         url = f'https://i.picsum.photos/id/{image_nr}/{length}/{width}.jpg'
         try:
