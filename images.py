@@ -1,6 +1,8 @@
-from keras.preprocessing.image import load_img
+from keras.preprocessing.image import img_to_array, load_img
 from matplotlib.pyplot import axis, figure, imshow, show, subplot
+from numpy import expand_dims
 from numpy.random import randint
+from skimage.transform import resize
 from urllib.error import HTTPError
 from urllib.request import urlretrieve
 
@@ -29,4 +31,14 @@ def load_random_images(amount=10, length=360, width=360,
         except HTTPError:
             pass
     return images
+
+
+def preprocess_image(image, function, target_size=None, expand=True):
+    """Apply a preprocessing function to an image"""
+    array = img_to_array(image)
+    if target_size:
+        resized = resize(array, target_size)
+    if expand:
+        expanded = expand_dims(resized, axis=0)
+    return function(expanded)
 
