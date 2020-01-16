@@ -21,7 +21,7 @@ def display_grid_of_images(list_of_images, columns=2, size=1, titles=[]):
 
 
 def load_random_images(amount=10, length=360, width=360,
-                       last_image_number=1084):
+                       last_image_number=1084, verbose=1):
     """Load random images from `https://picsum.photos/` website"""
     images = []
     while len(images) < amount:
@@ -30,6 +30,8 @@ def load_random_images(amount=10, length=360, width=360,
         try:
             urlretrieve(url, f'{image_number}.jpg')
             images.append(load_img(f'{image_number}.jpg'))
+            if verbose == 1:
+                print(f'{len(images)}/{amount} images loaded', end='\r')
         except HTTPError:
             pass
     return images
