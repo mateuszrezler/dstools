@@ -18,6 +18,13 @@ def extract_re(text, *expressions):
     return output_str.strip()
 
 
+def is_any_lowercase(text):
+
+    """Return True if any lowercase character is found"""
+
+    return bool([char for char in text if char.islower()])
+
+
 def remove_re(text, *expressions):
 
     """Remove regex-captured fragments from text"""
