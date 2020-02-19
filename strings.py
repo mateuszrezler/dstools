@@ -18,6 +18,17 @@ def extract_re(text, *expressions):
     return output_str.strip()
 
 
+def from_last_upper(text):
+    r"""
+    Return a slice of a given text starting from last upper case.
+    Return input text if upper case is not present.
+    """
+    for index, char in enumerate(text[::-1]):
+        if char.isupper():
+            return text[-index-1:]
+    return text
+
+
 def is_any_lowercase(text):
 
     """Return True if any lowercase character is found"""
