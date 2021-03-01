@@ -1,3 +1,4 @@
+from matplotlib.pyplot import scatter, show
 from numpy.random import randn, random
 
 
@@ -17,4 +18,8 @@ class SyntheticData2D(object):
                  noise=1):
         self.x = random(n_points)*(x_max-x_min)+x_min
         self.y = function(self.x+randn(n_points)*noise)
+
+    def show_scatter(self):
+        scatter(self.x, self.y)
+        show()
 
