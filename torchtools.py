@@ -1,5 +1,7 @@
 from matplotlib.pyplot import scatter, show
+from numpy import float32
 from numpy.random import randn, random
+from torch import from_numpy
 
 
 def from_np(tensor):
