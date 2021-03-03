@@ -26,8 +26,10 @@ class SyntheticData2D(object):
     def get_torch(self):
         return from_np(self.x), from_np(self.y)
 
-    def show_scatter(self):
+    def show_scatter(self, fit_line=None):
         scatter(self.x, self.y)
+        if fit_line is not None:
+            plot(self.x, fit_line)
         show()
 
 
