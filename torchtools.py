@@ -1,9 +1,7 @@
-from matplotlib.pyplot import scatter, show
+from matplotlib.pyplot import plot, scatter, show
 from numpy import float32
 from numpy.random import randn, random
 from torch import from_numpy
-from torch.nn import Linear, MSELoss
-from torch.optim import SGD
 
 
 def from_np(tensor):
@@ -50,6 +48,10 @@ class TrainingLoop(object):
         self.n_epochs = n_epochs
         self.losses = []
 
+    def show_losses_plot(self):
+        plot(self.losses)
+        show()
+
     def train(self):
         for epoch in range(self.n_epochs):
             self.optimizer.zero_grad()
@@ -59,4 +61,3 @@ class TrainingLoop(object):
             loss.backward()
             self.optimizer.step()
             print(f'Epoch: {epoch+1}/{self.n_epochs}, loss: {loss.item():.4f}')
-
